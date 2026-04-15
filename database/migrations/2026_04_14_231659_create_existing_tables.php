@@ -15,15 +15,15 @@ return new class extends Migration
         if (! Schema::hasTable('ci_secure')) {
             Schema::create('ci_secure', function (Blueprint $table) {
                 $table->integer('id_sesi')->autoIncrement();
-                $table->timestamp('sesi_time')->nullable()->default('current_timestamp()');
+                $table->timestamp('sesi_time')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
                 $table->string('sesi_key', 64)->nullable();
                 $table->string('sesi_device', 64)->nullable();
                 $table->text('sesi_token_fcm')->nullable();
                 $table->integer('id_user')->nullable();
                 $table->string('id_app', 20)->nullable();
-                $table->timestamp('sesi_logout')->default('0000-00-00 00:00:00');
+                $table->timestamp('sesi_logout')->nullable();
                 $table->tinyInteger('sesi_status')->nullable()->default(1);
-                $table->dateTime('last_activity')->default('current_timestamp()');
+                $table->dateTime('last_activity')->default(DB::raw('CURRENT_TIMESTAMP'));
                 $table->index(['id_user']);
             });
         }
@@ -78,8 +78,7 @@ return new class extends Migration
                 $table->integer('is_active')->default(0);
                 $table->dateTime('last_update')->nullable();
                 $table->text('last_update_notes')->nullable();
-                $table->dateTime('updated_at')->default('current_timestamp()');
-                $table->timestamp('updated_at')->useCurrent();
+                $table->dateTime('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             });
         }
 
@@ -113,9 +112,8 @@ return new class extends Migration
             Schema::create('gs_device_cmd_type', function (Blueprint $table) {
                 $table->integer('id')->autoIncrement();
                 $table->string('type_name', 25);
-                $table->dateTime('created_at')->default('current_timestamp()');
-                $table->dateTime('updated_at')->default('current_timestamp()');
-                $table->timestamps();
+                $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+                $table->dateTime('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             });
         }
 
@@ -423,14 +421,13 @@ return new class extends Migration
                 $table->string('last_img_file', 50)->nullable();
                 $table->dateTime('created_at')->nullable();
                 $table->string('updated_by', 25)->nullable();
-                $table->dateTime('updated_at')->nullable()->default('current_timestamp()');
+                $table->dateTime('updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
                 $table->string('sadap', 10)->nullable();
                 $table->date('sim_number_expired_dt')->nullable();
                 $table->integer('isSendSMS')->nullable()->default(0);
                 $table->integer('isEngineOff')->nullable()->default(1);
                 $table->integer('isOptimize')->nullable()->default(0);
                 $table->index(['manager_id']);
-                $table->timestamps();
             });
         }
 
@@ -1080,7 +1077,7 @@ return new class extends Migration
                 $table->bigInteger('id')->unsigned()->autoIncrement();
                 $table->bigInteger('admin_user_id')->unsigned()->comment('ID of admin who performed the reset');
                 $table->bigInteger('target_user_id')->unsigned()->comment('ID of user whose password was reset');
-                $table->timestamp('reset_at')->default('current_timestamp()')->comment('Timestamp of password reset');
+                $table->timestamp('reset_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('Timestamp of password reset');
                 $table->string('ip_address', 45)->nullable()->comment('IP address of admin');
                 $table->text('user_agent')->nullable()->comment('User agent of admin browser');
                 $table->index(['admin_user_id']);
@@ -1467,7 +1464,7 @@ return new class extends Migration
                 $table->integer('id')->autoIncrement();
                 $table->string('protocol', 128)->nullable();
                 $table->integer('deviceid');
-                $table->timestamp('servertime')->default('current_timestamp()');
+                $table->timestamp('servertime')->default(DB::raw('CURRENT_TIMESTAMP'));
                 $table->timestamp('devicetime');
                 $table->timestamp('fixtime');
                 $table->tinyInteger('valid');
