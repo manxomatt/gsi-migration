@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class GsTemplatesTableSeeder extends Seeder
 {
@@ -14,13 +15,13 @@ class GsTemplatesTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
-        \DB::table('gs_templates')->delete();
-        
-        \DB::table('gs_templates')->insert(array (
-            0 => 
-            array (
+
+        DB::table('gs_templates')->delete();
+
+        DB::table('gs_templates')->insert(array(
+            0 =>
+            array(
                 'template_id' => 1,
                 'name' => 'account_registration',
                 'language' => 'english',
@@ -34,8 +35,8 @@ Access to GPS server: %URL_LOGIN%
 Username: %USERNAME%
 Password: %PASSWORD%',
             ),
-            1 => 
-            array (
+            1 =>
+            array(
                 'template_id' => 2,
                 'name' => 'account_registration_au',
                 'language' => 'english',
@@ -50,8 +51,8 @@ Desktop access:
 Mobile access:
 %URL_AU_MOBILE%',
             ),
-            2 => 
-            array (
+            2 =>
+            array(
                 'template_id' => 3,
                 'name' => 'account_recover_url',
                 'language' => 'english',
@@ -62,8 +63,8 @@ A request has been made to recover account on %SERVER_NAME%.
 
 Use the link to complete the process: %URL_RECOVER%',
             ),
-            3 => 
-            array (
+            3 =>
+            array(
                 'template_id' => 4,
                 'name' => 'account_recover',
                 'language' => 'english',
@@ -75,8 +76,8 @@ Access to GPS server: %URL_LOGIN%
 Username: %USERNAME%
 Password: %PASSWORD%',
             ),
-            4 => 
-            array (
+            4 =>
+            array(
                 'template_id' => 5,
                 'name' => 'expiring_objects',
                 'language' => 'english',
@@ -88,8 +89,8 @@ Some of your objects activation will expire soon. Please login into account for 
 If you would like to continue using our service, please purchase access to %SERVER_NAME% at our shop:
 %URL_SHOP%',
             ),
-            5 => 
-            array (
+            5 =>
+            array(
                 'template_id' => 6,
                 'name' => 'event_email',
                 'language' => 'english',
@@ -104,8 +105,8 @@ Position: %G_MAP%
 Speed: %SPEED%
 Time (position): %DT_POS%',
             ),
-            6 => 
-            array (
+            6 =>
+            array(
                 'template_id' => 7,
                 'name' => 'event_sms',
                 'language' => 'english',
@@ -118,8 +119,8 @@ Address: %ADDRESS%
 Speed: %SPEED%
 Time (position): %DT_POS%',
             ),
-            7 => 
-            array (
+            7 =>
+            array(
                 'template_id' => 8,
                 'name' => 'expiring_account',
                 'language' => 'english',
@@ -128,8 +129,8 @@ Time (position): %DT_POS%',
 
 Your account will expire soon. Please contact us for more details.',
             ),
-            8 => 
-            array (
+            8 =>
+            array(
                 'template_id' => 9,
                 'name' => 'database_backup',
                 'language' => 'english',
@@ -138,8 +139,8 @@ Your account will expire soon. Please contact us for more details.',
 
 This is database backup, please do not reply to this e-mail.',
             ),
-            9 => 
-            array (
+            9 =>
+            array(
                 'template_id' => 10,
                 'name' => 'schedule_reports',
                 'language' => 'english',
@@ -148,12 +149,12 @@ This is database backup, please do not reply to this e-mail.',
 
 This is schedule report message, please do not reply to this e-mail.',
             ),
-            10 => 
-            array (
+            10 =>
+            array(
                 'template_id' => 11,
                 'name' => 'share_position_su_email',
                 'language' => 'english',
-            'subject' => 'Share position (%NAME%)',
+                'subject' => 'Share position (%NAME%)',
                 'message' => 'Hello,
 
 %USER_EMAIL% has shared with you position of object %NAME%.
@@ -164,16 +165,14 @@ Desktop access:
 Mobile access:
 %URL_SU_MOBILE%',
             ),
-            11 => 
-            array (
+            11 =>
+            array(
                 'template_id' => 12,
                 'name' => 'share_position_su_sms',
                 'language' => 'english',
-            'subject' => 'Share position (%NAME%)',
+                'subject' => 'Share position (%NAME%)',
                 'message' => '%USER_EMAIL% has shared position: %URL_SU_MOBILE%',
             ),
         ));
-        
-        
     }
 }

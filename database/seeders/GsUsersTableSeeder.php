@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class GsUsersTableSeeder extends Seeder
@@ -15,9 +16,9 @@ class GsUsersTableSeeder extends Seeder
     public function run()
     {
 
-        \DB::table('gs_users')->delete();
+        DB::table('gs_users')->delete();
 
-        \DB::table('gs_users')->insert(array(
+        DB::table('gs_users')->insert(array(
             0 => array(
                 'id' => 1,
                 'active' => 'true',
@@ -91,6 +92,5 @@ class GsUsersTableSeeder extends Seeder
             ),
 
         ));
-
     }
 }
